@@ -1,4 +1,4 @@
-![Descripción alternativa](/src/main/resources/static/imagen.png)
+![Descripción alternativa](./MockInit/MockTestingProject/src/main/resources/static/imagen.png)
 
 <p align="center">
     <a href="https://youtube.com/@unprogramadornace" target="_blank"><img align="center" src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="@unprogramadornace" /></a>
