@@ -52,9 +52,9 @@ public class Player {
     public String toString() {
         return "Player{" +
                 "id=" + id +
-                "name='" + name + '\'' +
-                "team='" + team + '\'' +
-                "position='" + position + '\'' +
-                '}' + '\n';
+                ", name='" + name + '\'' +
+                ", team='" + team + '\'' +
+                ", position='" + position + '\'' +
+                '}';
     }
 }

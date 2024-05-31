@@ -1,0 +1,23 @@
+
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+P
+ src/main/java/org/mock/Main.java,f\6\f6aadb40e9ee53090133378e2d219606d1728937
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+e
+5src/main/java/org/mock/persistence/entity/Player.java,a\9\a9a28b367595a3f6ad3ff57d7aaa73f19940c39d
+{
+Ksrc/main/java/org/mock/persistence/entity/repository/IPlayerRepository.java,e\2\e2d511e244f4425c5baf45d9bcc86bc972644aa2
+~
+Nsrc/main/java/org/mock/persistence/entity/repository/PlayerRepositoryImpl.java,3\2\327b5299481c05897ee49bdbf60142de7be6a69d
+b
+2src/main/java/org/mock/service/IPlayerService.java,9\4\94803dca190d675e85e21016b53774700acc5fdf
+e
+5src/main/java/org/mock/service/PlayerServiceImpl.java,a\c\aca27229517b69fab458aad656a9e46703c88bd6
+i
+9src/test/java/org/mock/service/PlayerServiceImplTest.java,a\5\a522d28af6f9160edef77ac63b7bd58432ad7fb7
+`
+0src/test/java/org/mock/service/DataProvider.java,4\9\499d83b156826772da5e83932a70588b35ab5a5b
+X
+(src/test/java/org/mock/DataProvider.java,5\d\5d9963d0af14819f2b5621278352687ba22ed399

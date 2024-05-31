@@ -1,4 +1,4 @@
-package org.mock.persistence.repository;
+package org.mock.persistence.entity.repository;
 
 import org.mock.persistence.entity.Player;
 

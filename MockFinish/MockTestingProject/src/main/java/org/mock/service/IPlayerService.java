@@ -1,4 +1,4 @@
-package org.mock.persistence.service;
+package org.mock.service;
 
 import org.mock.persistence.entity.Player;
 

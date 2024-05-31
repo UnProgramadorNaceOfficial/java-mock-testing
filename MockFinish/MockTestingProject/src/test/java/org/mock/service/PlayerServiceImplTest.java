@@ -2,9 +2,9 @@ package org.mock.service;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mock.DataProvider;
 import org.mock.persistence.entity.Player;
-import org.mock.persistence.repository.PlayerRepositoryImpl;
-import org.mock.persistence.service.PlayerServiceImpl;
+import org.mock.persistence.entity.repository.PlayerRepositoryImpl;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -25,7 +25,7 @@ public class PlayerServiceImplTest {
     private PlayerServiceImpl playerService;
 
     @Test
-    void testFindAll() {
+    public void testFindAll(){
         // When
         when(playerRepository.findAll()).thenReturn(DataProvider.playerListMock());
         List<Player> result = playerService.findAll();
@@ -36,65 +36,54 @@ public class PlayerServiceImplTest {
         assertEquals("Lionel Messi", result.get(0).getName());
         assertEquals("Inter Miami", result.get(0).getTeam());
         assertEquals("Delantero", result.get(0).getPosition());
-        verify(playerRepository).findAll();
+        verify(this.playerRepository).findAll();
     }
 
     @Test
-    void testFindById() {
+    public void testFindById(){
+        // Given
+        Long id = 1L;
+
         // When
-        // when(playerRepository.findById(anyLong())).thenReturn(DataProvider.playerMock());
-
-        doAnswer(invocation -> {
-            Long id = invocation.getArgument(0);
-
-            if (id <= 0) {
-                fail("El argumento no puede ser cero");
-            }
-            return DataProvider.playerMock();
-        }).when(playerRepository).findById(anyLong());
-
-        Player result = playerService.findById(10L);
+        when(this.playerRepository.findById( anyLong() )).thenReturn(DataProvider.playerMock());
+        Player player = this.playerService.findById(id);
 
         // Then
-        assertNotNull(result);
-        assertEquals("Lionel Messi", result.getName());
-        assertEquals("Inter Miami", result.getTeam());
-        assertEquals("Delantero", result.getPosition());
-        verify(playerRepository).findById(anyLong());
+        assertNotNull(player);
+        assertEquals("Lionel Messi", player.getName());
+        assertEquals("Inter Miami", player.getTeam());
+        assertEquals("Delantero", player.getPosition());
+        verify(this.playerRepository).findById( anyLong() );
     }
 
     @Test
-    void testSave(){
+    public void testSave(){
         // Given
         Player player = DataProvider.newPlayerMock();
 
         // When
-        playerService.save(player);
-
-//        doAnswer( invocation -> {
-//            Player playerArgument = invocation.getArgument(0);
-//
-//            if(playerArgument.getId() == 6 && playerArgument.getName().equalsIgnoreCase("Mohamed Salah")){
-//                return null;
-//            }
-//            return fail();
-//        } ).when(playerRepository).save(any(Player.class));
-
+        this.playerService.save(player);
 
         // Then
-        ArgumentCaptor<Player> playerCaptor = ArgumentCaptor.forClass(Player.class);
-        verify(playerRepository).save(playerCaptor.capture());
-        assertEquals(10L, playerCaptor.getValue().getId());
-        assertEquals("Mohamed Salah", playerCaptor.getValue().getName());
+        ArgumentCaptor<Player> playerArgumentCaptor = ArgumentCaptor.forClass(Player.class);
+        verify(this.playerRepository).save( any(Player.class) );
+        verify(this.playerRepository).save( playerArgumentCaptor.capture() );
+        assertEquals(10L, playerArgumentCaptor.getValue().getId());
+        assertEquals("Luiz Diaz", playerArgumentCaptor.getValue().getName());
     }
 
     @Test
     void testDeleteById(){
-        playerService.deleteById(2L);
+        // Given
+        Long id = 1L;
 
-        ArgumentCaptor<Long> idCaptor = ArgumentCaptor.forClass(Long.class);
-        verify(playerRepository).deleteById(anyLong());
-        verify(playerRepository).deleteById(idCaptor.capture());
-        assertEquals(2L, idCaptor.getValue());
+        // When
+        this.playerService.deleteById(id);
+
+        // Then
+        ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
+        verify(this.playerRepository).deleteById( anyLong() );
+        verify(this.playerRepository).deleteById( longArgumentCaptor.capture() );
+        assertEquals(1L, longArgumentCaptor.getValue());
     }
 }

@@ -1,7 +1,7 @@
-package org.mock.persistence.service;
+package org.mock.service;
 
 import org.mock.persistence.entity.Player;
-import org.mock.persistence.repository.PlayerRepositoryImpl;
+import org.mock.persistence.entity.repository.PlayerRepositoryImpl;
 
 import java.util.List;
 
